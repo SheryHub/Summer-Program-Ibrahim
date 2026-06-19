@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Summer Creator Program — 10 Week Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF6EC;
+    --paper-edge:#EDE3CB;
+    --ink:#2B2620;
+    --ink-soft:#6E6557;
+    --rule:#DCD2B6;
+
+    --tech:#1F6F78;       --tech-bg:#E3EFEE;
+    --creative:#C2701F;   --creative-bg:#FAEBDA;
+    --islamic:#2F6B4F;    --islamic-bg:#E5EFE7;
+    --critical:#5B4B8A;   --critical-bg:#EAE5F3;
+
+    --maxw:880px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    background-image:
+      linear-gradient(var(--paper-edge) 1px, transparent 1px);
+    background-size: 100% 2.1em;
+    background-position: 0 9.4em;
+    color:var(--ink);
+    font-family:"Source Sans 3", sans-serif;
+    font-size:17px;
+    line-height:1.6;
+  }
+
+  a{color:var(--tech); text-decoration-thickness: 1px;}
+  a:hover{color:var(--islamic);}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px 100px;}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    max-width:var(--maxw); margin:0 auto;
+    padding:64px 28px 36px;
+    border-bottom:2px solid var(--ink);
+  }
+  .eyebrow{
+    font-family:"JetBrains Mono", monospace;
+    font-size:12.5px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:18px;
+  }
+  h1.title{
+    font-family:"Fraunces", serif;
+    font-weight:700;
+    font-size:clamp(38px,6vw,58px);
+    line-height:1.04;
+    margin:0 0 14px;
+    letter-spacing:-0.01em;
+  }
+  .subtitle{
+    font-size:18px; color:var(--ink-soft); max-width:560px; margin:0 0 26px;
+  }
+  .legend{
+    display:flex; flex-wrap:wrap; gap:10px 22px;
+  }
+  .legend-item{
+    display:flex; align-items:center; gap:8px;
+    font-family:"JetBrains Mono", monospace; font-size:12.5px;
+    text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft);
+  }
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
+  .dot.tech{background:var(--tech);}
+  .dot.creative{background:var(--creative);}
+  .dot.islamic{background:var(--islamic);}
+  .dot.critical{background:var(--critical);}
+
+  /* ---------- NAV ---------- */
+  nav.toc{
+    max-width:var(--maxw); margin:0 auto; padding:16px 28px;
+    display:flex; flex-wrap:wrap; gap:18px;
+    font-family:"JetBrains Mono", monospace; font-size:12.5px;
+    border-bottom:1px solid var(--rule);
+    position:sticky; top:0; background:var(--paper); z-index:10;
+  }
+  nav.toc a{color:var(--ink); text-decoration:none; border-bottom:1px solid transparent;}
+  nav.toc a:hover{border-bottom-color:var(--ink);}
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{padding-top:56px;}
+  .section-num{
+    font-family:"JetBrains Mono", monospace; color:var(--ink-soft);
+    font-size:13px; margin-bottom:6px;
+  }
+  h2{
+    font-family:"Fraunces", serif; font-weight:600;
+    font-size:30px; margin:0 0 8px;
+  }
+  .section-intro{color:var(--ink-soft); max-width:620px; margin:0 0 28px;}
+
+  /* ---------- PILLAR CARDS ---------- */
+  .pillars{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
+  @media(max-width:640px){.pillars{grid-template-columns:1fr;}}
+  .pillar{
+    border:1px solid var(--rule); border-radius:4px; padding:18px 20px;
+    border-top:4px solid var(--c);
+  }
+  .pillar.tech{--c:var(--tech); background:var(--tech-bg);}
+  .pillar.creative{--c:var(--creative); background:var(--creative-bg);}
+  .pillar.islamic{--c:var(--islamic); background:var(--islamic-bg);}
+  .pillar.critical{--c:var(--critical); background:var(--critical-bg);}
+  .pillar h3{font-family:"Fraunces", serif; font-size:18px; margin:0 0 8px;}
+  .pillar p{margin:0; font-size:15px; color:var(--ink);}
+
+  /* ---------- ROUTINE TABLE ---------- */
+  table{width:100%; border-collapse:collapse; font-size:15px;}
+  table.routine th, table.routine td{
+    text-align:left; padding:10px 12px; border-bottom:1px solid var(--rule); vertical-align:top;
+  }
+  table.routine th{
+    font-family:"JetBrains Mono", monospace; font-size:11.5px; text-transform:uppercase;
+    letter-spacing:.04em; color:var(--ink-soft); border-bottom:2px solid var(--ink);
+  }
+  td.time{font-family:"JetBrains Mono", monospace; font-size:13.5px; white-space:nowrap; color:var(--ink-soft);}
+
+  /* ---------- WEEK CARDS (signature element) ---------- */
+  .week-card{
+    display:grid; grid-template-columns:90px 1fr; gap:0 18px;
+    padding:22px 0; border-bottom:1px solid var(--rule);
+  }
+  .week-meta{font-family:"JetBrains Mono", monospace;}
+  .week-num{font-size:13px; color:var(--ink-soft);}
+  .week-big{font-size:28px; font-weight:700; color:var(--ink);}
+  .week-title{font-family:"Fraunces", serif; font-size:20px; font-weight:600; margin:0 0 12px;}
+  .row{
+    display:grid; grid-template-columns:148px 1fr; gap:4px 14px;
+    padding:7px 0 7px 12px; border-left:3px solid var(--c);
+    margin-bottom:4px;
+  }
+  .row dt{
+    font-family:"JetBrains Mono", monospace; font-size:11.5px; text-transform:uppercase;
+    letter-spacing:.03em; color:var(--c); align-self:start; padding-top:2px;
+  }
+  .row dd{margin:0; font-size:15px;}
+  .row.tech{--c:var(--tech);}
+  .row.creative{--c:var(--creative);}
+  .row.islamic{--c:var(--islamic);}
+  .row.critical{--c:var(--critical);}
+  @media(max-width:640px){
+    .week-card{grid-template-columns:1fr;}
+    .row{grid-template-columns:1fr;}
+  }
+
+  /* ---------- RESOURCE LIST ---------- */
+  .resource{
+    border:1px solid var(--rule); border-radius:4px; padding:14px 16px; margin-bottom:10px;
+    display:grid; grid-template-columns:64px 1fr; gap:14px; align-items:start;
+  }
+  .resource .num{
+    font-family:"JetBrains Mono", monospace; font-size:22px; font-weight:700; color:var(--islamic);
+  }
+  .resource h4{margin:0 0 4px; font-size:16px;}
+  .resource p{margin:0 0 6px; font-size:14.5px; color:var(--ink-soft);}
+  .resource a{font-family:"JetBrains Mono", monospace; font-size:13px; word-break:break-all;}
+  .tag{
+    display:inline-block; font-family:"JetBrains Mono", monospace; font-size:11px;
+    text-transform:uppercase; letter-spacing:.04em; background:var(--islamic-bg); color:var(--islamic);
+    padding:2px 7px; border-radius:3px; margin-right:6px;
+  }
+  .note-box{
+    background:var(--creative-bg); border-left:3px solid var(--creative);
+    padding:12px 16px; font-size:14.5px; margin:18px 0; border-radius:0 4px 4px 0;
+  }
+
+  /* ---------- TOOLS ---------- */
+  .tools{display:grid; gap:14px;}
+  .tool-group h4{
+    font-family:"JetBrains Mono", monospace; font-size:12.5px; text-transform:uppercase;
+    letter-spacing:.04em; color:var(--ink-soft); margin:0 0 8px;
+  }
+  .tool-group ul{margin:0; padding-left:20px;}
+  .tool-group li{margin-bottom:5px; font-size:15px;}
+
+  /* ---------- TRACKER ---------- */
+  table.tracker td, table.tracker th{padding:8px 12px;}
+  table.tracker td:last-child{font-family:"JetBrains Mono", monospace; text-align:right;}
+
+  /* ---------- FOOTER NOTE ---------- */
+  .closing{
+    border-top:2px solid var(--ink); margin-top:60px; padding-top:30px;
+  }
+  .closing blockquote{
+    font-family:"Fraunces", serif; font-size:21px; font-style:italic;
+    margin:0 0 20px; color:var(--ink); border-left:3px solid var(--ink); padding-left:18px;
+  }
+
+  ul.plain{padding-left:20px; margin:0;}
+  ul.plain li{margin-bottom:6px;}
+
+  @media print{
+    nav.toc{position:static;}
+    body{background:#fff; background-image:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="eyebrow">A Guide For One 12-Year-Old &middot; 10 Weeks &middot; Pakistan, Summer 2026</div>
+  <h1 class="title">Summer Creator Program</h1>
+  <p class="subtitle">A 10-week plan to build one website, one YouTube channel, and four habits that outlast the summer.</p>
+  <div class="legend">
+    <span class="legend-item"><span class="dot tech"></span>Technology</span>
+    <span class="legend-item"><span class="dot creative"></span>Creativity</span>
+    <span class="legend-item"><span class="dot islamic"></span>Islamic Knowledge</span>
+    <span class="legend-item"><span class="dot critical"></span>Critical Thinking</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#pillars">Pillars</a>
+  <a href="#routine">Daily Routine</a>
+  <a href="#roadmap">10-Week Roadmap</a>
+  <a href="#islamic">Islamic Knowledge Resources</a>
+  <a href="#tools">Tools</a>
+  <a href="#tracker">Tracker &amp; Rewards</a>
+  <a href="#website">Website &amp; Channel</a>
+  <a href="#note">Note to Parent</a>
+</nav>
+
+<div class="wrap">
+
+<section id="pillars">
+  <div class="section-num">01</div>
+  <h2>The Four Pillars</h2>
+  <p class="section-intro">Every task this summer feeds one of these. If an activity doesn't clearly serve one, it doesn't belong in the week.</p>
+  <div class="pillars">
+    <div class="pillar tech">
+      <h3>Technology</h3>
+      <p>Not just using tools — understanding roughly how they work. Each week he picks one tech topic, researches it, and explains it well enough to write about and teach.</p>
+    </div>
+    <div class="pillar creative">
+      <h3>Creativity</h3>
+      <p>Design, editing, writing, building. The website, the thumbnails, the videos — all of it is making something from nothing, repeatedly, until it gets easier.</p>
+    </div>
+    <div class="pillar islamic">
+      <h3>Islamic Knowledge</h3>
+      <p>Seerah, the Khulafa Rashidun, and the Islamic Golden Age — told as stories first. He watches, narrates it back in his own words, then writes a short reflection.</p>
+    </div>
+    <div class="pillar critical">
+      <h3>Critical Thinking</h3>
+      <p>Research before AI, not instead of it. Check a second source. Explain things in his own words. This is the pillar that makes the other three actually stick.</p>
+    </div>
+  </div>
+</section>
+
+<section id="routine">
+  <div class="section-num">02</div>
+  <h2>The Daily Routine</h2>
+  <p class="section-intro">Around 3–3.5 focused hours a day. Long enough to make real progress, short enough that he doesn't burn out by week three.</p>
+  <table class="routine">
+    <tr><th>Time</th><th>Block</th><th>What happens</th></tr>
+    <tr><td class="time">9:00 – 9:25</td><td>Islamic Knowledge</td><td>Watch a short segment of this week's video. Take 3–5 notes by hand.</td></tr>
+    <tr><td class="time">9:25 – 9:55</td><td>Tech Research</td><td>Research this week's tech topic. Notes by hand or in a plain text file.</td></tr>
+    <tr><td class="time">9:55 – 10:15</td><td>Break</td><td>Away from the screen. No exceptions.</td></tr>
+    <tr><td class="time">10:15 – 11:15</td><td>Writing</td><td>Turn one of this morning's topics into a short article (250–400 words). AI helps with grammar and structure only — never the first draft.</td></tr>
+    <tr><td class="time">11:15 – 12:00</td><td>Creative Block</td><td>Rotates daily: website work, thumbnail design, HTML/CSS practice, video editing.</td></tr>
+    <tr><td class="time">After Asr</td><td>Video Editing</td><td>20–40 min. Cut clips, add text, export. Optional on lighter days.</td></tr>
+  </table>
+  <div class="note-box"><strong>Saturday</strong> is Creator Day — only publishing, no new learning. <strong>Sunday</strong> is a 15-minute review: what did I learn, what did I publish, what's next week.</div>
+</section>
+
+<section id="roadmap">
+  <div class="section-num">03</div>
+  <h2>The 10-Week Roadmap</h2>
+  <p class="section-intro">The spine of the whole summer. Each week pulls one thread from every pillar.</p>
+
+  <article class="week-card">
+    <div class="week-meta"><div class="week-num">WEEK</div><div class="week-big">01</div></div>
+    <div>
+      <h3 class="week-title">Foundations</h3>
+      <div class="row tech"><dt>Technology</dt><dd>What is Artificial Intelligence? — and what it's <em>for</em> in this program (assistant, not worker).</dd></div>
+      <div class="row islamic"><dt>Islamic Knowledge</dt><dd>Resource 1 (general Islamic knowledge clip) + Resource 2. Watch, narrate back, write 3 notes.</dd></div>
+      <div class="row creative"><dt>Creative Focus</dt><dd>Set up the website skeleton: homepage + About Me page (Google Sites or GitHub Pages).</dd></div>
+      <div class="row critical"><dt>Critical Thinking</dt><dd>"What's one thing AI got wrong or oversimplified this week?" — write it down.</dd></div>
+    </div>
+  </article>
+
+  <article class="week-card">
+    <div class="week-meta"><div class="week-num">WEEK</div><div class="week-big">02</div></div>
+    <div>
+      <h3 class="week-title">How Things Work</h3>
+      <div class="row tech"><dt>Technology</dt><dd>What is a Website? How does the internet actually move data around?</dd></div>
+      <div class="row islamic"><dt>Islamic Knowledge</dt><dd>Resource 3 begins (part 1 of 2). Pace it — pause and take notes rather than watching straight through.</dd></div>
+      <div class="row creative"><dt>Creative Focus</dt><dd>Canva basics — design his first thumbnail and banner.</dd></div>
+      <div class="row critical"><dt>Critical Thinking</dt><dd>Explain "what is a website" to someone who has never used the internet.</dd></div>
+    </div>
+  </article>
+
+  <article class="week-card">
+    <div class="week-meta"><div class="week-num">WEEK</div><div class="week-big">03</div></div>
+    <div>
+      <h3 class="week-title">Seerah, Part I</h3>
+      <div class="row tech"><dt>Technology</dt><dd>What is Linux? Why do programmers care about it?</dd></div>
+      <div class="row islamic"><dt>Islamic Knowledge</dt><dd>Resource 3 continues (part 2 of 2).</dd></div>
+      <div class="row creative"><dt>Creative Focus</dt><dd>HTML basics — view the source of his own site, change one element.</dd></div>
+      <div class="row critical"><dt>Critical Thinking</dt><dd>Pick one claim from this week's video and see if a second source agrees.</dd></div>
+    </div>
+  </article>
+
+  <article class="week-card">
+    <div class="week-meta"><div class="week-num">WEEK</div><div class="week-big">04</div></div>
+    <div>
+      <h3 class="week-title">Seerah, Part II</h3>
+      <div class="row tech"><dt>Technology</dt><dd>What is a GPU? Why does it matter for gaming and AI?</dd></div>
+      <div class="row islamic"><dt>Islamic Knowledge</dt><dd>Resource 4 begins (part 1 of 2).</dd></div>
+      <div class="row creative"><dt>Creative Focus</dt><dd>CSS basics — change the colors and fonts on his own site.</dd></div>
+      <div class="row critical"><dt>Critical Thinking</dt><dd>Narrate this week's lesson out loud, in his own words, with no notes in front of him.</dd></div>
+    </div>
+  </article>
+
+  <article class="week-card">
+    <div class="week-meta"><div class="week-num">WEEK</div><div class="week-big">05</div></div>
+    <div>
+      <h3 class="week-title">Toward the Khulafa</h3>
+      <div class="row tech"><dt>Technology</dt><dd>What is Cybersecurity? Basic password and privacy habits.</dd></div>
+      <div class="row islamic"><dt>Islamic Knowledge</dt><dd>Resource 4 finishes; Resource 5 begins.</dd></div>
+      <div class="row creative"><dt>Creative Focus</dt><dd>Thumbnail design, round two — apply one piece of feedback from round one.</dd></div>
+      <div class="row critical"><dt>Critical Thinking</dt><dd>"What decision would I have made differently, and why?"</dd></div>
+    </div>
+  </article>
+
+  <article class="week-card">
+    <div class="week-meta"><div class="week-num">WEEK</div><div class="week-big">06</div></div>
+    <div>
+      <h3 class="week-title">Khulafa Rashidun, Part I</h3>
+      <div class="row tech"><dt>Technology</dt><dd>What is Robotics? How do robots "decide" what to do?</dd></div>
+      <div class="row islamic"><dt>Islamic Knowledge</dt><dd>Resource 5 finishes; Resource 6 begins.</dd></div>
+      <div class="row creative"><dt>Creative Focus</dt><dd>Video editing fundamentals — clean cuts and text overlays.</dd></div>
+      <div class="row critical"><dt>Critical Thinking</dt><dd>Compare two leaders from this week — what made each one effective?</dd></div>
+    </div>
+  </article>
+
+  <article class="week-card">
+    <div class="week-meta"><div class="week-num">WEEK</div><div class="week-big">07</div></div>
+    <div>
+      <h3 class="week-title">Umar (RA), Up Close</h3>
+      <div class="row tech"><dt>Technology</dt><dd>What is a Raspberry Pi? What can a tiny computer actually do?</dd></div>
+      <div class="row islamic"><dt>Islamic Knowledge</dt><dd>Resource 6 finishes. Resource 7 (the Omar Series) begins — 1–2 episodes this week, not a binge.</dd></div>
+      <div class="row creative"><dt>Creative Focus</dt><dd>Content repurposing — cut one long travel video into 5 Shorts.</dd></div>
+      <div class="row critical"><dt>Critical Thinking</dt><dd>"What does justice look like in this week's episodes? Give one specific example."</dd></div>
+    </div>
+  </article>
+
+  <article class="week-card">
+    <div class="week-meta"><div class="week-num">WEEK</div><div class="week-big">08</div></div>
+    <div>
+      <h3 class="week-title">Into the Golden Age</h3>
+      <div class="row tech"><dt>Technology</dt><dd>How does ChatGPT actually work, at a basic level?</dd></div>
+      <div class="row islamic"><dt>Islamic Knowledge</dt><dd>Finish the Omar Series episodes. Begin the Islamic Golden Age — Al-Khwarizmi and algebra (1001 Inventions, free).</dd></div>
+      <div class="row creative"><dt>Creative Focus</dt><dd>Website polish — add a proper Islamic Knowledge section, organize all articles by category.</dd></div>
+      <div class="row critical"><dt>Critical Thinking</dt><dd>How did Muslim scholars build on earlier Greek, Indian, and Persian knowledge — and why does that matter?</dd></div>
+    </div>
+  </article>
+
+  <article class="week-card">
+    <div class="week-meta"><div class="week-num">WEEK</div><div class="week-big">09</div></div>
+    <div>
+      <h3 class="week-title">Golden Age, Part II</h3>
+      <div class="row tech"><dt>Technology</dt><dd>What is an FPGA, or — if that's too dry this week — what is a Cloud Server?</dd></div>
+      <div class="row islamic"><dt>Islamic Knowledge</dt><dd>Ibn Sina, Ibn al-Haytham, and the House of Wisdom (1001 Inventions).</dd></div>
+      <div class="row creative"><dt>Creative Focus</dt><dd>Audio — add a clean voiceover or background music to one video, properly mixed.</dd></div>
+      <div class="row critical"><dt>Critical Thinking</dt><dd>Pick one scholar from this week. What would they think of a smartphone?</dd></div>
+    </div>
+  </article>
+
+  <article class="week-card">
+    <div class="week-meta"><div class="week-num">WEEK</div><div class="week-big">10</div></div>
+    <div>
+      <h3 class="week-title">Salahuddin &amp; Wrap-Up</h3>
+      <div class="row tech"><dt>Technology</dt><dd>Recap week — pick his favorite topic from the summer and write a deeper follow-up article.</dd></div>
+      <div class="row islamic"><dt>Islamic Knowledge</dt><dd>Salahuddin Ayyubi — leadership and mercy under pressure. Final reflection: "What I Learned About Islamic History This Summer."</dd></div>
+      <div class="row creative"><dt>Creative Focus</dt><dd>Final polish on the website. Publish anything left in the drafts folder.</dd></div>
+      <div class="row critical"><dt>Critical Thinking</dt><dd>Self-review: "What was hardest? What am I most proud of?" — go through the full portfolio with a parent.</dd></div>
+    </div>
+  </article>
+</section>
+
+<section id="islamic">
+  <div class="section-num">04</div>
+  <h2>The Islamic Knowledge Resources</h2>
+  <p class="section-intro">The seven videos slotted into the roadmap above, in the order they were given. Resources 2–6 are placed assuming they build chronologically (Seerah, then the Khulafa) — worth a quick preview before each week starts, in case the actual pacing runs differently than expected.</p>
+
+  <div class="resource">
+    <div class="num">1</div>
+    <div>
+      <span class="tag">Week 1</span>
+      <h4>General Islamic Knowledge clip</h4>
+      <p>A short reflection-style video (IslamiCity) — good as a gentle opener before the history track begins.</p>
+      <a href="https://www.youtube.com/watch?v=_aQZuN9JIDc" target="_blank">youtube.com/watch?v=_aQZuN9JIDc</a>
+    </div>
+  </div>
+  <div class="resource">
+    <div class="num">2</div>
+    <div>
+      <span class="tag">Week 1</span>
+      <h4>Resource 2</h4>
+      <p>Preview alongside Resource 1 in week one.</p>
+      <a href="https://www.youtube.com/watch?v=Xw_yCQiwDdU" target="_blank">youtube.com/watch?v=Xw_yCQiwDdU</a>
+    </div>
+  </div>
+  <div class="resource">
+    <div class="num">3</div>
+    <div>
+      <span class="tag">Weeks 2–3</span>
+      <h4>Resource 3 (playlist)</h4>
+      <p>Split across two weeks rather than watched in one sitting.</p>
+      <a href="https://www.youtube.com/watch?v=t69INlf-bZQ&list=PLBRytRKszp-r7g-Fuh1I82PcoS3ojHmiE" target="_blank">youtube.com/watch?v=t69INlf-bZQ&amp;list=PLBRytRKszp-r7g...</a>
+    </div>
+  </div>
+  <div class="resource">
+    <div class="num">4</div>
+    <div>
+      <span class="tag">Weeks 4–5</span>
+      <h4>Resource 4 (playlist)</h4>
+      <p>Split across two weeks.</p>
+      <a href="https://www.youtube.com/watch?v=KkiRkkKoPv4&list=PLBRytRKszp-qgYlb-rsyV_UveGMQ6Uel9" target="_blank">youtube.com/watch?v=KkiRkkKoPv4&amp;list=PLBRytRKszp-qg...</a>
+    </div>
+  </div>
+  <div class="resource">
+    <div class="num">5</div>
+    <div>
+      <span class="tag">Weeks 5–6</span>
+      <h4>Resource 5 (playlist)</h4>
+      <p>Transition point into the Khulafa Rashidun stage.</p>
+      <a href="https://www.youtube.com/watch?v=e_6plpdl5Kk&list=PLBRytRKszp-oZXbys_Tg2BOmK5xpN20rh" target="_blank">youtube.com/watch?v=e_6plpdl5Kk&amp;list=PLBRytRKszp-oZ...</a>
+    </div>
+  </div>
+  <div class="resource">
+    <div class="num">6</div>
+    <div>
+      <span class="tag">Weeks 6–7</span>
+      <h4>Resource 6 (playlist)</h4>
+      <p>Leads directly into the Omar Series below.</p>
+      <a href="https://www.youtube.com/watch?v=Y22vp9pp8JE&list=PLC89682017B43845D" target="_blank">youtube.com/watch?v=Y22vp9pp8JE&amp;list=PLC89682017B43845D</a>
+    </div>
+  </div>
+  <div class="resource">
+    <div class="num">7</div>
+    <div>
+      <span class="tag">Weeks 7–8</span>
+      <h4>The Omar Series</h4>
+      <p>MBC historical drama on the life of Umar ibn al-Khattab (RA), English subtitles. Pace it at 1–2 episodes a week — each runs roughly 45–50 minutes, too long for a single morning block.</p>
+      <a href="https://archive.org/details/MBC-Omar-Series/mbc1-omarseries-Ep01-EnglishSubtitles.mp4" target="_blank">archive.org/details/MBC-Omar-Series</a>
+    </div>
+  </div>
+
+  <div class="note-box">No video link was provided for the Islamic Golden Age or Salahuddin stages (Weeks 8–10) — <strong>1001 Inventions</strong> (free, kid-friendly, covers Al-Khwarizmi, Ibn Sina, Ibn al-Haytham) is the recommended filler there.</div>
+</section>
+
+<section id="tools">
+  <div class="section-num">05</div>
+  <h2>Tools</h2>
+  <p class="section-intro">All free, and all light enough to run on an older computer.</p>
+  <div class="tools">
+    <div class="tool-group">
+      <h4>Writing &amp; Research</h4>
+      <ul><li>Google Docs or a plain text editor</li><li>Wikipedia + the Islamic Knowledge resources above</li><li>Free Claude or ChatGPT — grammar and structure help only</li></ul>
+    </div>
+    <div class="tool-group">
+      <h4>Graphic Design</h4>
+      <ul><li>Canva (free tier, browser-based — rendering happens server-side, so it's light on the actual machine)</li><li>GIMP, once Canva feels too simple</li></ul>
+    </div>
+    <div class="tool-group">
+      <h4>Website</h4>
+      <ul><li>GitHub Pages + a plain text editor (VS Code or Notepad) — real HTML/CSS, no install weight</li><li>Google Sites as a zero-friction starting point, if GitHub Pages feels like too much on day one</li></ul>
+    </div>
+    <div class="tool-group">
+      <h4>Video Editing</h4>
+      <ul><li>CapCut (free, lightweight) if he has a smartphone — the easiest path</li><li>Shotcut or OpenShot on desktop — both noticeably lighter than Premiere or Resolve</li></ul>
+    </div>
+  </div>
+</section>
+
+<section id="tracker">
+  <div class="section-num">06</div>
+  <h2>Tracker &amp; Rewards</h2>
+  <p class="section-intro">A paper checklist on the wall works better than an app — visible progress, no login required.</p>
+  <table class="tracker">
+    <tr><th>Action</th><th>Points</th></tr>
+    <tr><td>Article published</td><td>10</td></tr>
+    <tr><td>Video uploaded</td><td>10</td></tr>
+    <tr><td>Short uploaded</td><td>3</td></tr>
+    <tr><td>New skill learned</td><td>5</td></tr>
+    <tr><td>Full week completed</td><td>20</td></tr>
+  </table>
+  <p style="font-size:14.5px; color:var(--ink-soft); margin-top:10px;">Every 100 points: a small reward — an outing, his favorite meal, a new book.</p>
+  <p style="font-size:15px; margin-top:18px;"><strong>By Week 10:</strong> 20 articles (10 tech, 10 Islamic Knowledge), ~20 travel videos, ~50 Shorts, one working website, and a working knowledge of HTML/CSS he can actually use without asking AI first.</p>
+</section>
+
+<section id="website">
+  <div class="section-num">07</div>
+  <h2>Website &amp; Channel Structure</h2>
+  <p class="section-intro">Simple on purpose — no fancy design needed.</p>
+  <ul class="plain">
+    <li><strong>Home</strong></li>
+    <li><strong>About Me</strong></li>
+    <li><strong>Technology</strong> — one article per week</li>
+    <li><strong>Islamic Knowledge</strong> — one article per week</li>
+    <li><strong>Travel Videos</strong> — embeds or links to the channel</li>
+    <li><strong>Contact</strong></li>
+  </ul>
+  <p style="margin-top:16px;">YouTube channel runs in parallel: 2 travel videos and 5 Shorts a week, every week, regardless of the website's pace.</p>
+</section>
+
+<section id="note" class="closing">
+  <div class="section-num">08</div>
+  <h2>A Note to Read Before Week One</h2>
+  <blockquote>He is not trying to become rich this summer. He's becoming a researcher, a writer, a creator, and a young Muslim who understands his own history well enough to explain it to someone else.</blockquote>
+  <p>If the schedule starts to feel like school, that's the signal to ease off the hours, not push through them. Ten weeks of steady 3-hour days will produce more — and a much happier kid — than three weeks of 6-hour days followed by a burnout in July.</p>
+</section>
+
+</div>
+</body>
+</html>
